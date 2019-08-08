@@ -1,0 +1,61 @@
+
+package dob_calculator;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
+
+import java.util.*;
+public class DOB_Calculator {
+
+
+    public static void main(String[] args) throws ParseException {
+
+        try {
+            String dateStart;
+            Scanner in=new Scanner(System.in);
+            Calendar c=Calendar.getInstance();
+            Date d22=c.getTime();
+            System.out.println("enter your dob MM/dd/yyyy HH:mm:ss");
+            dateStart=in.nextLine();//enter the date in string
+
+
+SimpleDateFormat  change = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+
+Date date1 = null;
+date1=change.parse(dateStart);  //convert string type in date type
+long diff;
+diff = d22.getTime() - date1.getTime();//diffrence time between starting to stop
+
+long dSecond= diff / 1000 % 60;
+long dminute= diff /(60*1000) % 60;
+long dhour= diff / (60 * 60 * 1000) % 24;
+long ddays= diff /(60 * 60 * 24 * 1000 );
+long year=diff/(60*60*24*1000)/365;
+double month=(double)diff/(60*60*24*1000)/30.5;
+//double mont=(double)diff/(60*60*24*1000)/30.5;
+long week=ddays/7;
+double mm=(double)year*12;
+//double we=Math.floor(month-mm);
+//double weed=month-we/year/7;
+//double weeek=ddays/weed/24;
+//System.out.println("mon\t"+(mont-Math.floor(month)));
+System.out.println("year:\t"+year);
+System.out.println("month:\t" +Math.floor(month-mm));
+System.out.println("week c:\t"+week);
+//System.out.println("week \t"+Math.floor(weed));
+//System.out.println("week of \t"+Math.floor(weeek));
+System.out.println("DAYS:\t"+ddays);
+System.out.println("Hour:\t"+dhour);
+System.out.println("Minutes:\t"+dminute);
+System.out.println("Seconds\t"+dSecond);
+
+
+        }catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+}
